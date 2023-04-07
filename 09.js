@@ -25,8 +25,38 @@ function filtrar(funcion) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
 
-};
+  Array.prototype.filtrar = function (funcion) {
+    var result = []; // Array para almacenar los elementos filtrados
+
+    for (var i = 0; i < this.length; i++) {
+      if (funcion(this[i])) {
+        // Llamamos a la función callback y evaluamos el resultado
+        result.push(this[i]); // Si es true, agregamos el elemento al nuevo array
+      }
+    }
+
+    return result; // Devolvemos el nuevo array con los elementos filtrados
+  };
+
+  // Ejemplo de uso:
+  // var productos = [{
+  //   price: 100,
+  //   name: 'tv'
+  // }, {
+  //   price: 50,
+  //   name: 'phone'
+  // }, {
+  //   price: 30,
+  //   name: 'lamp'
+  // }];
+
+  // var resultado = productos.filtrar(function(p) {
+  //   return p.price >= 50;
+  // });
+
+  // console.log(resultado); // Output: [{price: 100, name:'tv'}]
+}
 
 // No modifiques nada debajo de esta linea //
 
-module.exports = filtrar
+module.exports = filtrar;
